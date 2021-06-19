@@ -37,11 +37,13 @@ public class DustActivity extends AppCompatActivity {
     TextView text_temp_value;
     TextView text_humi;
     TextView text_humi_value;
+    TextView text_battery;
 
     ImageView smile;
     ImageView frown;
     ImageView dizzy;
     ImageView angry;
+    ImageView battery;
 
     LinearLayout linearLayout_dust;
     SwipeRefreshLayout mswipe;
@@ -51,6 +53,7 @@ public class DustActivity extends AppCompatActivity {
     private static final String TAG_HUMI = "humi";
     private static final String TAG_DUST ="dust";
     private static final String TAG_TIME ="time";
+    private static final String TAG_BATTERY ="battery";
 
     String email = "mail";
     String myJSON;
@@ -67,7 +70,7 @@ public class DustActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 GetData task = new GetData();
-                task.execute("http://13.125.177.193/dust.php");
+                task.execute("http://13.125.177.193/dust2.php");
 
                 mswipe.setRefreshing(false);
             }
@@ -81,16 +84,18 @@ public class DustActivity extends AppCompatActivity {
         text_temp_value = (TextView)findViewById(R.id.text_temp_value);
         text_humi = (TextView)findViewById(R.id.text_humi);
         text_humi_value = (TextView)findViewById(R.id.text_humi_value);
+        text_battery = (TextView)findViewById(R.id.text_battery);
 
         smile = (ImageView)findViewById(R.id.smile);
         frown = (ImageView)findViewById(R.id.frown);
         dizzy = (ImageView)findViewById(R.id.dizzy);
         angry = (ImageView)findViewById(R.id.angry);
+        battery = (ImageView)findViewById(R.id.battery);
 
         linearLayout_dust = (LinearLayout)findViewById(R.id.linearLayout_dust);
 
         GetData task = new GetData();
-        task.execute("http://13.125.177.193/dust.php");
+        task.execute("http://13.125.177.193/dust2.php");
     }
 
     private class GetData extends AsyncTask<String, Void, String>{
@@ -174,12 +179,14 @@ public class DustActivity extends AppCompatActivity {
                 int temp = item.getInt(TAG_TEMP);
                 int humi = item.getInt(TAG_HUMI);
                 int dust = item.getInt(TAG_DUST);
+                int battery = item.getInt(TAG_BATTERY);
                 String time = item.getString(TAG_TIME);
 
                 text_temp_value.setText(Integer.toString(temp)+"°C");
                 text_humi_value.setText(Integer.toString(humi)+"%");
                 text_dust_value.setText(Integer.toString(dust)+"㎍/㎥");
                 text_time.setText(time);
+                text_battery.setText(Integer.toString(battery)+"%");
 
                 if(dust>=0 && dust<=30){
                     linearLayout_dust.setBackgroundResource(R.color.dust_blue);
