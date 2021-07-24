@@ -70,7 +70,7 @@ public class DustActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 GetData task = new GetData();
-                task.execute("http://13.125.177.193/dust2.php");
+                task.execute("http://ip/dust2.php");
 
                 mswipe.setRefreshing(false);
             }
@@ -95,7 +95,7 @@ public class DustActivity extends AppCompatActivity {
         linearLayout_dust = (LinearLayout)findViewById(R.id.linearLayout_dust);
 
         GetData task = new GetData();
-        task.execute("http://13.125.177.193/dust2.php");
+        task.execute("http://ip/dust2.php");
     }
 
     private class GetData extends AsyncTask<String, Void, String>{

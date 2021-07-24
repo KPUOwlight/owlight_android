@@ -267,7 +267,7 @@ public class SignupActivity extends AppCompatActivity {
                     String email = (String) params[1];
                     String pw = (String) params[2];
 
-                    String link = "http://13.125.177.193/signup.php";
+                    String link = "http://ip/signup.php";
                     String data = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8");
                     data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") +
                             "&" + URLEncoder.encode("pw", "UTF-8") + "=" + URLEncoder.encode(pw, "UTF-8");

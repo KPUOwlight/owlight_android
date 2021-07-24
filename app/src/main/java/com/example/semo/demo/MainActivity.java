@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     String Id = (String) params[0];
                     String Pw = (String) params[1];
 
-                    String link = "http://13.125.177.193/login.php";
+                    String link = "http://ip/login.php";
                     String data = URLEncoder.encode("Id", "UTF-8") + "=" + URLEncoder.encode(Id, "UTF-8");
                     data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");
 
